@@ -17,13 +17,13 @@ button{font:inherit;cursor:pointer}
   background-position:center center;
   pointer-events:none;
 }
-.garden{z-index:0;background-image:url('open-garden.webp');opacity:0;transform:scale(1.02);will-change:transform}
+.garden{z-index:0;background-image:url('open-garden.webp');opacity:0;transform:scale(1);will-change:transform}
 .closed-cover{z-index:1;background-image:url('closed-gates.webp');opacity:1}
 .invitation.opening .garden,.invitation.entered .garden{opacity:1}
-.invitation.opening .garden{animation:travel 8.2s cubic-bezier(.15,.3,.18,1) forwards}
-.invitation.entered .garden{transform:scale(1.16) translateY(2%)}
+.invitation.opening .garden{animation:travel 7.2s cubic-bezier(.18,.3,.2,1) forwards}
+.invitation.entered .garden{transform:scale(1.08)}
 .invitation.opening .closed-cover,.invitation.entered .closed-cover{opacity:0;transition:opacity 1.15s ease}
-@keyframes travel{from{transform:scale(1.02)}to{transform:scale(1.16) translateY(2%)}}
+@keyframes travel{from{transform:scale(1)}to{transform:scale(1.08)}}
 
 .gate-layer{position:absolute;left:0;right:0;top:47%;bottom:0;z-index:3;opacity:0;pointer-events:none;perspective:1100px}
 .gate-door{position:absolute;top:0;bottom:0;width:50%;background-image:url('closed-gates.webp');background-repeat:no-repeat;background-size:200% calc(100dvh / .53);backface-visibility:hidden;will-change:transform;filter:drop-shadow(0 2px 3px rgba(95,66,37,.1))}
@@ -42,7 +42,8 @@ button{font:inherit;cursor:pointer}
 .lantern-right{right:8%;animation-delay:1.1s}
 @keyframes glow{from{opacity:.3;transform:scale(.9)}to{opacity:.72;transform:scale(1.1)}}
 
-.petal-field{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden}
+.petal-field{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden;opacity:0;transition:opacity .6s ease .25s}
+.invitation.opening .petal-field,.invitation.entered .petal-field{opacity:1}
 .petal{position:absolute;top:-8%;height:10px;width:6px;border-radius:60% 15% 70% 15%;background:linear-gradient(140deg,#c48b7c,#e9b6a8);opacity:.6;animation:fall linear infinite;filter:blur(.25px)}
 @keyframes fall{to{transform:translate3d(70px,115dvh,0) rotate(510deg)}}
 
