@@ -1,52 +1,81 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f6eddf"><meta name="description" content="Tasrif and Samiha invite you to their Nikah on January 1, 2027, after Maghrib.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6eddf">
+<meta name="description" content="Tasrif and Samiha invite you to their Nikah on January 1, 2027, after Maghrib.">
 <title>Tasrif &amp; Samiha | Our Nikah</title>
-<link rel="preload" as="image" href="closed-gates.webp"><link rel="preload" as="image" href="open-garden.webp">
-<link rel="stylesheet" href="style.css"><script src="script.js" defer></script>
+<link rel="preload" as="image" href="closed-gates.webp">
+<link rel="preload" as="image" href="open-garden.webp">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 <body>
 <main class="invitation" id="invitation" aria-label="Tasrif and Samiha Nikah invitation">
   <div class="garden" aria-hidden="true"></div>
   <div class="closed-cover" aria-hidden="true"></div>
-  <div class="gate-layer" aria-hidden="true"><div class="gate-door door-left"></div><div class="gate-door door-right"></div></div>
-  <div class="lantern-light lantern-left" aria-hidden="true"></div><div class="lantern-light lantern-right" aria-hidden="true"></div>
+  <div class="gate-layer" aria-hidden="true">
+    <div class="gate-door door-left"></div>
+    <div class="gate-door door-right"></div>
+  </div>
+  <div class="lantern-light lantern-left" aria-hidden="true"></div>
+  <div class="lantern-light lantern-right" aria-hidden="true"></div>
   <div class="petal-field" id="petals" aria-hidden="true"></div>
+
   <section class="scene scene-cover active" data-scene="0" aria-label="Welcome">
     <button class="open-button" id="openButton" type="button">Open our invitation <span aria-hidden="true">✧</span></button>
   </section>
+
   <section class="scene scene-verse" data-scene="1" aria-label="Blessing" aria-hidden="true">
     <div class="lettering verse-panel">
-      <p class="eyebrow">In the name of Allah</p>
-      <p class="verse">“And He placed between you affection and mercy.”</p>
-      <p class="source">Qur’an 30:21, excerpt</p>
-      <span class="ornament" aria-hidden="true">✧</span>
-      <h1 class="names">Tasrif <em>&amp;</em> Samiha</h1>
+      <p class="arabic-bismillah" lang="ar" dir="rtl">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+      <div class="rule short"></div>
+      <p class="arabic-verse" lang="ar" dir="rtl">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً</p>
+      <p class="verse-translation">“And among His signs is that He created for you spouses from among yourselves so that you may find tranquility in them, and He placed between you affection and mercy.”</p>
+      <p class="source">Qur’an 30:21</p>
     </div>
   </section>
+
   <section class="scene scene-details" data-scene="2" aria-label="Nikah details" aria-hidden="true">
     <div class="lettering details-panel">
       <p class="eyebrow">With the blessings of Allah</p>
       <h2 class="nikah">Nikah <span>Ceremony</span></h2>
       <div class="rule"></div>
-      <p class="day">Friday</p><p class="date">January 1, 2027</p><p class="time">After Maghrib</p>
-      <div class="rule"></div><p class="eyebrow venue-label">Venue to be announced</p>
+      <p class="day">Friday</p>
+      <p class="date">January 1, 2027</p>
+      <p class="time">After Maghrib</p>
+      <div class="rule"></div>
+      <p class="eyebrow venue-label">Venue to be announced</p>
       <p class="footnote">Details to follow</p>
+      <div class="countdown-wrap">
+        <p class="countdown-label">Counting down to our Nikah</p>
+        <div class="countdown" id="countdown" aria-label="Countdown to the Nikah">
+          <div class="count-box"><strong id="cd-days">--</strong><small>Days</small></div>
+          <div class="count-box"><strong id="cd-hours">--</strong><small>Hours</small></div>
+          <div class="count-box"><strong id="cd-minutes">--</strong><small>Minutes</small></div>
+        </div>
+      </div>
     </div>
   </section>
+
   <section class="scene scene-note" data-scene="3" aria-label="A note from us" aria-hidden="true">
     <div class="lettering note-panel">
       <p class="eyebrow">A little note from us</p>
       <p class="note-lead">A new year, and the sweetest beginning.</p>
       <p class="note-body">With Allah’s blessings, we begin our forever through Nikah. We would love to share this special day with you. Your presence and duas would mean the world to us.</p>
-      <div class="rule"></div><p class="love">With love,</p><p class="signoff">Tasrif &amp; Samiha</p>
+      <div class="rule"></div>
+      <p class="love">With love,</p>
+      <p class="signoff">Tasrif &amp; Samiha</p>
       <button class="replay-button" id="replayButton" type="button">Experience it again ↺</button>
     </div>
   </section>
+
   <div class="navigation" id="navigation" aria-label="Invitation navigation" hidden>
-    <button id="previous" type="button" aria-label="Previous page">‹</button><div class="dots" id="dots"></div><button id="next" type="button" aria-label="Next page">›</button>
+    <button id="previous" type="button" aria-label="Previous page">‹</button>
+    <div class="dots" id="dots"></div>
+    <button id="next" type="button" aria-label="Next page">›</button>
   </div>
 </main>
-</body></html>
+</body>
+</html>
