@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f8f2e7">
+<meta name="description" content="Tasrif & Samiha invite you to celebrate their Nikah on January 1, 2027, after Maghrib.">
+<meta property="og:title" content="Tasrif & Samiha | Nikah Invitation">
+<meta property="og:description" content="January 1, 2027 • After Maghrib • Venue to be announced">
+<title>Tasrif & Samiha — Nikah Invitation</title>
+<link rel="preload" as="image" href="assets/closed-gates.webp">
+<link rel="preload" as="image" href="assets/open-garden.webp">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<main class="page">
+<div class="invitation" id="invitation" aria-label="Interactive Nikah invitation">
+ <div class="garden-base"></div><div class="soft-light"></div>
+ <div class="gate-curtain" id="gateCurtain" aria-hidden="true"><div class="gate-half left"></div><div class="gate-half right"></div></div>
+ <div class="petals" id="petals" aria-hidden="true"></div>
+ <section class="scene scene-intro active" data-scene="0" aria-label="Welcome">
+   <div class="intro-top"><span class="eyebrow">A new year, a beautiful beginning</span><div class="crest" aria-hidden="true">T <i>&amp;</i> S</div></div>
+   <button class="enter-button" id="enterButton">Open our invitation <span aria-hidden="true">✧</span></button>
+ </section>
+ <section class="scene scene-reveal" data-scene="1" aria-label="Garden reveal" inert>
+   <div class="top-glass"><div class="mini-rule">✧</div><h1 class="script hero-name">Tasrif <span>&amp;</span> Samiha</h1><p class="subline">A new chapter, written with love and duas</p></div>
+   <button class="advance" data-next>Continue <span aria-hidden="true">→</span></button>
+ </section>
+ <section class="scene scene-verse" data-scene="2" aria-label="Quranic verse and names" inert>
+   <div class="content-glass verse-card"><div class="ornament">❦</div><p class="arabic" lang="ar" dir="rtl">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p><p class="verse-english">“And among His signs is that He created for you spouses from among yourselves so that you may find tranquility in them; and He placed between you affection and mercy.”</p><p class="reference">Qur’an · Ar-Rum 30:21 (excerpt)</p><div class="fine-rule"></div><h2 class="script names">Tasrif <span>&amp;</span> Samiha</h2><p class="small-caps">Joyfully invite you to their Nikah</p></div>
+   <button class="advance" data-next>Our celebration <span aria-hidden="true">→</span></button>
+ </section>
+ <section class="scene scene-details" data-scene="3" aria-label="Nikah details" inert>
+   <div class="content-glass details-card"><div class="ornament">❦</div><p class="kicker">With the blessings of Allah</p><h2 class="script section-title">Nikah <em>Ceremony</em></h2><div class="fine-rule"></div><p class="day">Friday</p><p class="date">January 1, 2027</p><p class="when">After Maghrib</p><div class="fine-rule"></div><p class="venue-label">VENUE</p><p class="venue">To be announced</p><p class="note">Location details will follow</p></div>
+   <button class="advance" data-next>A note from us <span aria-hidden="true">→</span></button>
+ </section>
+ <section class="scene scene-message" data-scene="4" aria-label="A message from the couple" inert>
+   <div class="content-glass message-card"><div class="ornament">❦</div><p class="kicker">From our hearts to yours</p><p class="message-main">We’re starting the new year with our favorite blessing — the beginning of our forever together.</p><p class="message-small">As we begin this beautiful chapter through Nikah, we would love to have you by our side. Your presence, love, and duas will make the day even more special.</p><div class="fine-rule"></div><p class="with-love">With love,</p><h2 class="script signoff">Tasrif &amp; Samiha</h2><div class="tiny-heart">♡</div></div>
+   <button class="advance" id="replayButton">Experience it again <span aria-hidden="true">↺</span></button>
+ </section>
+ <div class="bottom-ui"><button class="back-button" id="backButton" aria-label="Previous scene" disabled>←</button><div class="progress" id="progress" aria-label="Invitation progress"></div><button class="next-button" id="nextButton" aria-label="Next scene" disabled>→</button></div>
+</div>
+<p class="below">Made with love for our Nikah · 01.01.2027</p>
+</main><script src="script.js" defer></script></body></html>
