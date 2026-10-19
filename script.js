@@ -1,44 +1,21 @@
 (() => {
-  'use strict';
-  const container = document.getElementById('invitation');
+  const app = document.getElementById('invitation');
   const scenes = [...document.querySelectorAll('.scene')];
-  const progress = document.getElementById('progress');
-  const back = document.getElementById('backButton');
-  const next = document.getElementById('nextButton');
-  const enter = document.getElementById('enterButton');
-  let scene = 0;
-  let gateTimer = null;
-  let opened = false;
-  const dots = scenes.map((_,i) => {
-    const el=document.createElement('button');el.className='dot';el.setAttribute('aria-label',`Go to scene ${i+1}`);
-    el.addEventListener('click',()=>{ if(opened) showScene(i); });progress.appendChild(el);return el;
-  });
-  function showScene(i){
-    if(i<0||i>=scenes.length)return;
-    scene=i;
-    scenes.forEach((s,j)=>{ const active=j===i;s.classList.toggle('active',active);s.inert=!active;s.setAttribute('aria-hidden',String(!active)); });
-    dots.forEach((d,j)=>{d.classList.toggle('current',j===i);d.setAttribute('aria-current',j===i?'step':'false');});
-    back.disabled=!opened||i<=1;
-    next.disabled=!opened||i===scenes.length-1;
-  }
-  function begin(){
-    if(opened)return;opened=true;
-    enter.disabled=true;
-    container.classList.add('opened');
-    gateTimer=setTimeout(()=>showScene(1),2900);
-  }
-  function replay(){
-    clearTimeout(gateTimer);opened=false;container.classList.remove('opened');enter.disabled=false;showScene(0);
-  }
-  enter.addEventListener('click',begin);
-  document.querySelectorAll('[data-next]').forEach(btn=>btn.addEventListener('click',()=>showScene(scene+1)));
-  document.getElementById('replayButton').addEventListener('click',replay);
-  back.addEventListener('click',()=>showScene(scene-1));next.addEventListener('click',()=>showScene(scene+1));
-  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&opened)showScene(scene+1);if(e.key==='ArrowLeft'&&opened)showScene(scene-1);if(e.key==='Enter'&&!opened&&document.activeElement===document.body)begin();});
-  let x=0;container.addEventListener('touchstart',e=>{x=e.touches[0].clientX;},{passive:true});container.addEventListener('touchend',e=>{if(!opened)return;const d=e.changedTouches[0].clientX-x;if(Math.abs(d)>60)showScene(scene+(d<0?1:-1));},{passive:true});
-  const holder=document.getElementById('petals');
-  for(let i=0;i<13;i++){
-    const el=document.createElement('i');el.className='petal';el.style.left=`${(i*37+11)%96}%`;el.style.animationDuration=`${12+(i*3)%10}s`;el.style.animationDelay=`${-i*2.2}s`;el.style.scale=`${.65+(i%4)*.17}`;holder.appendChild(el);
-  }
-  showScene(0);
+  const enter = document.getElementById('openButton');
+  const replay = document.getElementById('replayButton');
+  const nav = document.getElementById('navigation');
+  const previous = document.getElementById('previous');
+  const next = document.getElementById('next');
+  const dots = document.getElementById('dots');
+  let page = 0, opened = false, animating = false, timer = null;
+  scenes.forEach((_,i) => {const dot=document.createElement('button'); dot.type='button';dot.className='dot';dot.setAttribute('aria-label',`Go to page ${i+1}`);dot.addEventListener('click',()=>{if(opened&&!animating&&i>0)show(i)});dots.appendChild(dot)});
+  function show(i){if(i<0||i>=scenes.length)return;page=i;scenes.forEach((el,k)=>{el.classList.toggle('active',k===i);el.setAttribute('aria-hidden',String(k!==i));});previous.disabled=i<=1;next.disabled=i===scenes.length-1;[...dots.children].forEach((d,k)=>d.classList.toggle('current',i===k));}
+  function begin(){if(opened||animating)return;opened=true;animating=true;scenes[0].classList.add('leaving');app.classList.add('opening');enter.disabled=true;timer=setTimeout(()=>{app.classList.remove('opening');app.classList.add('entered');animating=false;nav.hidden=false;show(1)},6900)}
+  function restart(){clearTimeout(timer);animating=false;opened=false;app.classList.remove('opening','entered');nav.hidden=true;scenes[0].classList.remove('leaving');enter.disabled=false;show(0);}
+  enter.addEventListener('click',begin);replay.addEventListener('click',restart);
+  previous.addEventListener('click',()=>show(page-1));next.addEventListener('click',()=>show(page+1));
+  let x=null;app.addEventListener('touchstart',e=>{x=e.changedTouches[0].clientX},{passive:true});app.addEventListener('touchend',e=>{if(!opened||animating||x===null)return;let dx=e.changedTouches[0].clientX-x;x=null;if(Math.abs(dx)>65)show(page+(dx<0?1:-1))},{passive:true});
+  document.addEventListener('keydown',e=>{if(!opened||animating)return;if(e.key==='ArrowRight')show(page+1);if(e.key==='ArrowLeft')show(page-1)});
+  const petalHolder=document.getElementById('petals');for(let i=0;i<17;i++){const p=document.createElement('i');p.className='petal';p.style.left=`${(i*37+11)%100}%`;p.style.animationDuration=`${10+(i%7)*2.2}s`;p.style.animationDelay=`-${(i*1.9)%19}s`;p.style.opacity=String(.23+(i%5)*.09);petalHolder.appendChild(p)}
+  show(0);
 })();
